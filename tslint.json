@@ -1,0 +1,22 @@
+{
+  "defaultSeverity": "error",
+  "extends": [
+    "tslint:latest",
+    "tslint-sonarts",
+    "tslint-config-airbnb",
+    "tslint-etc",
+    "tslint-config-prettier"
+  ],
+  "jsRules": {},
+  "rules": {
+    "linebreak-style": [
+      true,
+      "LF"
+    ],
+    "no-unused-declaration": true,
+    "prettier": true
+  },
+  "rulesDirectory": [
+    "tslint-plugin-prettier"
+  ]
+}

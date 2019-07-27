@@ -1,0 +1,7 @@
+{
+    "editor.codeActionsOnSave": {
+        "source.fixAll.tslint": true
+    },
+    "files.eol": "\n",
+    "typescript.format.enable": false
+}

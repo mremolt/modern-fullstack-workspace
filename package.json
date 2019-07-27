@@ -1,0 +1,23 @@
+{
+  "name": "modern-fullstack-workspace",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "prettier": "^1.18.2",
+    "tslib": "^1.10.0",
+    "tslint": "^5.18.0",
+    "tslint-config-airbnb": "^5.11.1",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-etc": "^1.6.0",
+    "tslint-plugin-prettier": "^2.0.1",
+    "tslint-sonarts": "^1.9.0",
+    "typescript": "^3.5.3"
+  }
+}
