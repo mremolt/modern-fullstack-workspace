@@ -9,12 +9,29 @@
   ],
   "jsRules": {},
   "rules": {
+    "interface-name": [
+      true,
+      "never-prefix"
+    ],
     "linebreak-style": [
       true,
       "LF"
     ],
+    "no-implicit-dependencies": false,
     "no-unused-declaration": true,
-    "prettier": true
+    "no-submodule-imports": [
+      true,
+      "rxjs",
+      "redux-devtools-extension"
+    ],
+    "prettier": true,
+    "variable-name": {
+      "options": [
+        "ban-keywords",
+        "check-format",
+        "allow-leading-underscore"
+      ]
+    }
   },
   "rulesDirectory": [
     "tslint-plugin-prettier"

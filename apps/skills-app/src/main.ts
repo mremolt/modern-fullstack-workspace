@@ -1,3 +1,3 @@
-const x = 42;
+import './app/store/root';
 
-console.log('fooooo', x);
+import './app/app.element';

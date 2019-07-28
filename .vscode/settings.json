@@ -3,5 +3,6 @@
         "source.fixAll.tslint": true
     },
     "files.eol": "\n",
-    "typescript.format.enable": false
+    "typescript.format.enable": false,
+    "editor.tabSize": 2
 }
