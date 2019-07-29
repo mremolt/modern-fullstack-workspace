@@ -3,7 +3,7 @@
     "target": "es2018",
     "module": "esnext",
     "sourceMap": true,
-    "composite": true,
+    "allowJs": true,
     "importHelpers": true,
     "strict": true,
     "noUnusedLocals": true,
@@ -14,10 +14,14 @@
     "esModuleInterop": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
+    "resolveJsonModule": true,
     "baseUrl": ".",
     "paths": {
       "@mr/core": [
         "libs/core/index.ts"
+      ],
+      "@mr/models": [
+        "libs/models/index.ts"
       ]
     },
     "typeRoots": [

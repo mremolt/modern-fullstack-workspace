@@ -23,10 +23,14 @@ module.exports = {
 		new HtmlWebpackPlugin({
 			title: 'Skills App',
 			template: path.resolve(__dirname, 'apps/skills-app/src/index.html')
-		}), new ForkTsCheckerWebpackPlugin({
-			tslint: true,
+		}),
+		new ForkTsCheckerWebpackPlugin({
+			tslint: false,
 			useTypescriptIncrementalApi: true,
-			measureCompilationTime: true
+			measureCompilationTime: true,
+			compilerOptions: {
+				allowJs: false
+			}
 		})
 	],
 
@@ -36,7 +40,7 @@ module.exports = {
 				test: /.(ts|tsx)?$/,
 				loader: 'ts-loader',
 				include: [
-					path.resolve(__dirname, 'apps'),
+					path.resolve(__dirname, 'apps/skills-app'),
 					path.resolve(__dirname, 'libs'),
 					path.resolve(__dirname, 'typings')
 				],

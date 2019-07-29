@@ -1,4 +1,4 @@
-import { CustomElement, withObservables } from '@mr/core';
+import { CustomElement, HttpService, withObservables } from '@mr/core';
 
 import { LitElement } from 'lit-element';
 
@@ -8,10 +8,13 @@ import { html, TemplateResult } from 'lit-html';
 
 @CustomElement({ selector: 'skills-users' })
 export class HomeElement extends withObservables(LitElement) {
-  public shadowRoot!: ShadowRoot;
-
-  constructor(private service: BestService) {
+  constructor(private service: BestService, private http: HttpService) {
     super();
+  }
+
+  public connectedCallback(): void {
+    super.connectedCallback();
+    this.http.get('people').subscribe(console.warn);
   }
 
   public render(): TemplateResult {
