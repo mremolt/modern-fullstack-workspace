@@ -8,15 +8,13 @@ import { html, TemplateResult } from 'lit-html';
 
 @CustomElement({ selector: 'skills-home', useLightDom: true })
 export class HomeElement extends withObservables(LitElement) {
-  public shadowRoot!: ShadowRoot;
-
   constructor(private service: BestService) {
     super();
   }
 
   public render(): TemplateResult {
     return html`
-      <p>Hello Home!</p>
+      <h2>Homepage</h2>
       <p>Service: ${this.service.getData()}</p>
     `;
   }

@@ -1,3 +1,7 @@
-p {
-  border: 1px solid red;
+@import '~bulma/bulma';
+
+skills-app {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
 }

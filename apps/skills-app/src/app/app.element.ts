@@ -1,41 +1,19 @@
-import { CustomElement, Store, withObservables } from '@mr/core';
+import { CustomElement } from '@mr/core';
 import { Router } from '@vaadin/router';
-import { html, LitElement, property, TemplateResult } from 'lit-element';
-import { Observable } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { html, LitElement, TemplateResult } from 'lit-element';
 
 import { ROUTES } from './app.routes';
-import './elements/home.element';
-import './elements/users.element';
-import { BestService } from './services/best.service';
-import { State } from './store/root';
-
-const counterSelector = (state: State) => state.counter;
 
 @CustomElement({ selector: 'skills-app', useLightDom: true })
-export class AppElement extends withObservables(LitElement) {
+export class AppElement extends LitElement {
   public shadowRoot!: ShadowRoot;
 
-  @property() private counter: number = 0;
-
-  private counter$: Observable<number>;
-
-  constructor(private service: BestService, private store: Store<State>) {
+  constructor() {
     super();
-
-    this.counter$ = this.store.select(counterSelector);
   }
 
   public connectedCallback(): void {
     super.connectedCallback();
-
-    this.counter$.pipe(takeUntil(this.onDestroy$)).subscribe(num => {
-      this.counter = num;
-    });
-
-    setInterval(() => {
-      this.store.dispatch({ type: 'INCREMENT' });
-    }, 160);
   }
 
   public firstUpdated(): void {
@@ -46,14 +24,73 @@ export class AppElement extends withObservables(LitElement) {
 
   public render(): TemplateResult {
     return html`
-      <p>Hello World!</p>
-      <p>Data: ${this.service.getData()}</p>
-      <p>Number: ${this.counter}!</p>
+      <style>
+        .content {
+          flex: 1;
+        }
+      </style>
 
-      <a href="/">Home</a>
-      <a href="/users">Users</a>
+      <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="/">
+            <strong>Skills App</strong>
+          </a>
 
-      <div id="outlet"></div>
+          <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+        </div>
+
+        <div id="navbarBasicExample" class="navbar-menu">
+          <div class="navbar-start">
+            <a class="navbar-item" href="/">
+              Home
+            </a>
+
+            <a class="navbar-item"  href="/users">
+              Users
+            </a>
+
+            <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link">
+                More
+              </a>
+
+              <div class="navbar-dropdown">
+                <a class="navbar-item">
+                  About
+                </a>
+                <a class="navbar-item">
+                  Jobs
+                </a>
+                <a class="navbar-item">
+                  Contact
+                </a>
+                <hr class="navbar-divider" />
+                <a class="navbar-item">
+                  Report an issue
+                </a>
+              </div>
+            </div>
+          </div>
+      </nav>
+
+      <section class="section content">
+        <div class="container">
+          
+          <div id="outlet"></div>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <div class="content has-text-centered">
+          <p>
+            The best footer ever!
+          </p>
+        </div>
+      </footer>
     `;
   }
 }
