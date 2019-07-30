@@ -14,7 +14,7 @@ module.exports = merge(defaultConfig, {
 					{
 						loader: 'file-loader',
 						options: {
-							name: 'bundle.css',
+							name: 'styles.css',
 						},
 					},
 					{ loader: 'extract-loader' },

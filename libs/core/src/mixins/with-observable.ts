@@ -1,6 +1,5 @@
 import { Subject } from 'rxjs';
-
-type Constructor<T = {}> = new (...args: any[]) => T;
+import { Constructor } from '../interfaces/constructor.type';
 
 export function withObservables<TBase extends Constructor<HTMLElement>>(baseClass: TBase) {
   return class extends baseClass {

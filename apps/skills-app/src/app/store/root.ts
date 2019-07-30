@@ -5,7 +5,7 @@ import { counter2 } from './counter2/counter2.reducer';
 import { people } from './people/people.reducer';
 
 import { PEOPLE_FEATURE_NAME } from './people/feature-name.constant';
-import { fetchPeople$ } from './people/people.epics';
+import { deletePerson$, fetchPeople$, redirectAfterSave$, savePerson$ } from './people/people.epics';
 
 const reducerMap = combineReducers({ people, counter: counter2 });
 
@@ -15,3 +15,6 @@ addReducer('counter', counter2);
 addReducer(PEOPLE_FEATURE_NAME, people);
 
 diContainer.bind(APP_EPICS).toConstantValue(fetchPeople$);
+diContainer.bind(APP_EPICS).toConstantValue(savePerson$);
+diContainer.bind(APP_EPICS).toConstantValue(deletePerson$);
+diContainer.bind(APP_EPICS).toConstantValue(redirectAfterSave$);

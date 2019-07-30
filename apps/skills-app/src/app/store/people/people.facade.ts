@@ -1,10 +1,11 @@
 import { Store } from '@mr/core';
 import { injectable } from 'inversify';
 
-import { PersonDto } from '@mr/models';
+import { Person, PersonDto } from '@mr/models';
 import { Observable } from 'rxjs';
 import { AjaxError } from 'rxjs/ajax';
-import { fetchPeople, setActive } from './people.actions';
+import { take } from 'rxjs/operators';
+import { deletePerson, fetchPeople, savePerson, setActive } from './people.actions';
 import {
   FeatureState,
   getActiveEntity,
@@ -33,8 +34,20 @@ export class PeopleFacade {
     this.activeEntity$ = this.store.select(getActiveEntity);
   }
 
-  public fetch(): void {
-    this.store.dispatch(fetchPeople.request());
+  public fetch(force: boolean = false): void {
+    this.loaded$.pipe(take(1)).subscribe(loaded => {
+      if (!loaded || force) {
+        this.store.dispatch(fetchPeople.request());
+      }
+    });
+  }
+
+  public save(person: Person): void {
+    this.store.dispatch(savePerson.request(person));
+  }
+
+  public delete(person: Person): void {
+    this.store.dispatch(deletePerson.request(person));
   }
 
   public setActive(id: number): void {

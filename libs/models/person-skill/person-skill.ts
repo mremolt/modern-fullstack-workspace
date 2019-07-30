@@ -5,14 +5,6 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type Id = number;
-export type Firstname = string;
-export type Lastname = string;
-export type Email = string;
-
-export interface Person {
-  id: Id;
-  firstName: Firstname;
-  lastName: Lastname;
-  email?: Email;
+export interface PersonSkill {
+  [k: string]: any;
 }

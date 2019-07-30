@@ -2,10 +2,10 @@ import fastify from 'fastify';
 import fastifyCors from 'fastify-cors';
 import fastifyObjectionjs from 'fastify-objectionjs';
 
-import { PersonModel } from '@mr/models';
-
 import knexfile from '../knexfile';
 import { peopleRoutesPlugin } from './people/people.routes';
+import { PersonModel } from './people/person.model';
+import { SkillModel } from './skills/skill.model';
 import { skillsRoutesPlugin } from './skills/skills.routes';
 
 const server = fastify({
@@ -16,7 +16,7 @@ server.register(fastifyCors, {});
 
 server.register(fastifyObjectionjs, {
   knexConfig: knexfile.development,
-  models: [PersonModel],
+  models: [PersonModel, SkillModel],
 });
 
 server.register(peopleRoutesPlugin, { prefix: '/v1/people' });

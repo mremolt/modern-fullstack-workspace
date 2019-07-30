@@ -1,19 +1,19 @@
-import { CustomElement, withObservables, withValidation } from '@mr/core';
-
+import { CustomElement, withValidation } from '@mr/core';
+import { Person, personValidator } from '@mr/models';
 import { LitElement, property } from 'lit-element';
-
-import { Person, PersonDto, personValidator } from '@mr/models';
 import { html, TemplateResult } from 'lit-html';
-import { takeUntil } from 'rxjs/operators';
+
 import { PeopleFacade } from '../store/people/people.facade';
 
-@CustomElement({ selector: 'skills-person-edit' })
-export class PersonEditElement extends withValidation(withObservables(LitElement)) {
+@CustomElement({ selector: 'skills-person-new' })
+export class PersonNewElement extends withValidation(LitElement) {
   @property() public errors: { [key: string]: string } = {};
-  @property() private person?: PersonDto;
 
-  private location!: {
-    params: { id: string };
+  private person: Person = {
+    id: 0,
+    firstName: '',
+    lastName: '',
+    email: '',
   };
 
   constructor(private facade: PeopleFacade) {
@@ -21,18 +21,7 @@ export class PersonEditElement extends withValidation(withObservables(LitElement
     this.validator = personValidator;
   }
 
-  public connectedCallback(): void {
-    super.connectedCallback();
-
-    this.facade.activeEntity$.pipe(takeUntil(this.onDestroy$)).subscribe(person => {
-      this.person = person;
-    });
-
-    this.facade.fetch();
-    this.facade.setActive(Number(this.location.params.id));
-  }
-
-  public updated(): void {
+  public firstUpdated(): void {
     this.form = this.renderRoot.querySelector('form') as HTMLFormElement;
   }
 
@@ -48,11 +37,9 @@ export class PersonEditElement extends withValidation(withObservables(LitElement
     return html`
       <link rel="stylesheet" href="/styles.css" />
       <div class="content">
-        <h2>Edit person ${this.location.params.id}</h2>
+        <h2>Add new person</h2>
 
         <form @submit=${this.submit}>
-          <input type="hidden" name="id" value=${this.person.id} />
-
           <div class="field">
             <label class="label">First name</label>
             <div class="control">

@@ -6,13 +6,13 @@
  */
 
 export type Id = number;
-export type PersonId = number;
-export type SkillId = number;
-export type Level = string;
+export type Firstname = string;
+export type Lastname = string;
+export type Email = string;
 
-export interface PersonSkill {
-  id: Id;
-  personId?: PersonId;
-  skillId?: SkillId;
-  level: Level;
+export interface Person {
+  id?: Id;
+  firstName: Firstname;
+  lastName: Lastname;
+  email?: Email;
 }

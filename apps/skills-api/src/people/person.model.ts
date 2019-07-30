@@ -1,15 +1,13 @@
+import { Person, personSchema } from '@mr/models';
 import { Model } from 'objection';
-import { Person } from './person';
-
-import { SkillModel } from '../skill/skill.model';
-import personSchemaJson from './person.schema.json';
+import { SkillModel } from '../skills/skill.model';
 
 export class PersonModel extends Model implements Person {
   static get tableName(): string {
     return 'people';
   }
 
-  public static jsonSchema = personSchemaJson;
+  public static jsonSchema = personSchema;
 
   public static relationMappings = {
     skills: {

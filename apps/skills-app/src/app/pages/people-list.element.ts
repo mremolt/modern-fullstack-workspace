@@ -1,4 +1,4 @@
-import { asyncObservableTemplate, CustomElement } from '@mr/core';
+import { asyncObservableTemplate, CustomElement, withObservables } from '@mr/core';
 
 import { LitElement } from 'lit-element';
 
@@ -8,7 +8,7 @@ import { repeat } from 'lit-html/directives/repeat';
 import { PeopleFacade } from '../store/people/people.facade';
 
 @CustomElement({ selector: 'skills-people-list', useLightDom: false })
-export class PeopleListElement extends LitElement {
+export class PeopleListElement extends withObservables(LitElement) {
   constructor(private facade: PeopleFacade) {
     super();
   }
@@ -38,7 +38,7 @@ export class PeopleListElement extends LitElement {
         <td>${person.email}</td>
         <td>
           <a class="button is-primary" href="/people/${person.id}/edit">edit</a>
-          <button type="button" class="button is-danger">delete</button>
+          <button type="button" class="button is-danger" @click=${() => this.facade.delete(person)}>delete</button>
         </td>
       </tr>
     `;
@@ -70,6 +70,8 @@ export class PeopleListElement extends LitElement {
         </table>
 
         ${asyncObservableTemplate(this.facade.loading$, loadingTemplate)}
+
+        <a class="button is-primary" href="/people/new">Add new Person</a>
       </div>
     `;
   }

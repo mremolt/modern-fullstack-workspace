@@ -4,7 +4,6 @@
   "type": "object",
   "title": "Person",
   "required": [
-    "id",
     "firstName",
     "lastName"
   ],
@@ -12,10 +11,8 @@
   "properties": {
     "id": {
       "$id": "#/properties/id",
-      "type": "number",
+      "type": "integer",
       "title": "Id",
-      "default": null,
-      "minimum": 1,
       "examples": [
         1
       ]

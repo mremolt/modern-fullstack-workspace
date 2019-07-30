@@ -5,7 +5,7 @@ import { combineEpics } from 'redux-observable';
 import { createEpicMiddleware } from 'redux-observable-es6-compat';
 import { Selector } from 'reselect';
 import { Observable } from 'rxjs';
-import { distinctUntilChanged, map, share } from 'rxjs/operators';
+import { distinctUntilChanged, map, shareReplay } from 'rxjs/operators';
 
 import { HttpService } from '../http/http.service';
 import { APP_EPICS } from '../symbols/app.epics.symbol';
@@ -47,7 +47,7 @@ export class Store<T = any> extends Observable<T> {
     return this.source.pipe(
       map(state => selector(state)),
       distinctUntilChanged(),
-      share()
+      shareReplay(1)
     );
   }
 

@@ -14,6 +14,13 @@ export const ROUTES = [
     },
   },
   {
+    component: 'skills-person-new',
+    path: '/people/new',
+    action() {
+      import('./pages/person-new.element');
+    },
+  },
+  {
     component: 'skills-person-edit',
     path: '/people/:id/edit',
     action() {

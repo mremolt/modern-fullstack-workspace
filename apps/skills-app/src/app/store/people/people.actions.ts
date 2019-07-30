@@ -12,3 +12,17 @@ export const fetchPeople = createAsyncAction(
 
 export const reset = createAction('[People] Reset State');
 export const setActive = createAction('[People] Set active Person', action => (id: number) => action(id));
+
+export const savePerson = createAsyncAction(
+  '[People] Save Person',
+  '[People] Save Person Success',
+  '[People] Save Person Error',
+  '[People] Save Person Cancel'
+)<Person, Person, AjaxError, void>();
+
+export const deletePerson = createAsyncAction(
+  '[People] Delete Person',
+  '[People] Delete Person Success',
+  '[People] Delete Person Error',
+  '[People] Delete Person Cancel'
+)<Person, {}, AjaxError, void>();

@@ -1,7 +1,6 @@
 import { Plugin, RequestHandler } from 'fastify';
 import { IncomingMessage, Server, ServerResponse } from 'http';
-
-import { SkillModel } from '@mr/models';
+import { SkillModel } from './skill.model';
 
 const getSkills: RequestHandler = () => {
   return SkillModel.query();
