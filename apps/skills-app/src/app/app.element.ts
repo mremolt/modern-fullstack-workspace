@@ -4,7 +4,7 @@ import { html, LitElement, TemplateResult } from 'lit-element';
 
 import { ROUTES } from './app.routes';
 
-@CustomElement({ selector: 'skills-app', useLightDom: true })
+@CustomElement({ selector: 'skills-app', useLightDom: false })
 export class AppElement extends LitElement {
   public shadowRoot!: ShadowRoot;
 
@@ -24,6 +24,7 @@ export class AppElement extends LitElement {
 
   public render(): TemplateResult {
     return html`
+      <link rel="stylesheet" href="/styles.css" />
       <style>
         .content {
           flex: 1;
@@ -49,8 +50,8 @@ export class AppElement extends LitElement {
               Home
             </a>
 
-            <a class="navbar-item"  href="/users">
-              Users
+            <a class="navbar-item"  href="/people">
+              People
             </a>
 
             <div class="navbar-item has-dropdown is-hoverable">

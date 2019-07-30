@@ -22,8 +22,10 @@
     "no-submodule-imports": [
       true,
       "rxjs",
-      "redux-devtools-extension"
+      "redux-devtools-extension",
+      "lit-hml/directives/repeat"
     ],
+    "object-literal-sort-keys": false,
     "prettier": true,
     "variable-name": {
       "options": [

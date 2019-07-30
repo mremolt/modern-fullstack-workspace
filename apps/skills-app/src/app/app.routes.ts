@@ -3,14 +3,21 @@ export const ROUTES = [
     component: 'skills-home',
     path: '/',
     action() {
-      import('./elements/home.element');
+      import('./pages/home.element');
     },
   },
   {
-    component: 'skills-users',
-    path: '/users',
+    component: 'skills-people-list',
+    path: '/people',
     action() {
-      import('./elements/users.element');
+      import('./pages/people-list.element');
+    },
+  },
+  {
+    component: 'skills-person-edit',
+    path: '/people/:id/edit',
+    action() {
+      import('./pages/person-edit.element');
     },
   },
 ];
