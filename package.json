@@ -54,7 +54,7 @@
   },
   "dependencies": {
     "@vaadin/router": "^1.2.1",
-    "ajv": "^6.10.2",
+    "ajv": "^6.12.3",
     "bulma": "^0.7.5",
     "dot-prop-immutable": "^1.5.0",
     "fastify": "^2.7.0",
